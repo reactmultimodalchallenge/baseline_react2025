@@ -1,0 +1,42 @@
+model_name: motion_diffusion
+_target_: trainer.motion_diffusion.Trainer
+
+trainer_mode: generic  # generic facial reaction generator
+folder: save/${trainer.model_name}/${data.data_name}/${task}
+ckpt_dir: ${get_last_checkpoint:${trainer.folder}}
+resumed_training: ${resume}  # true | false
+current_runid: ${run_id}
+resume_runid: ${resume_id}
+batch_size: 4
+post_config_name: configs/model/emotion_autoencoder.yaml
+post_clip_length: 1000  # ground-truths alignment
+data_clamp: True
+
+generic:
+    seed: 1234
+    start_epoch: 0
+    epochs: 500
+    lr: 0.0001
+    model: LatentMatcher
+    clip_grad: False
+    num_workers: 16
+    log_dir: log
+    tb_dir: tb_logs
+    out_dir: results
+    save_period: 10
+    val_period: 10
+    num_preds: 10
+    clip_length: 750
+    window_size: 30
+    s_ratio: 2
+
+renderer:  # face animation based on predicted 3DMM coefficients
+    name: PIRenderer
+    _target_: utils.render.Render
+    do_render: False
+
+defaults:
+    - /model/motion_diffusion@model
+    - /model/optim/adamw@optim
+    - /model/scheduler/cosine_annealing@scheduler
+    - /model/losses/motion_diffusion@criterion  # loss func

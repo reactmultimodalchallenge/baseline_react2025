@@ -1,0 +1,26 @@
+
+hydra:
+  run:
+    dir: outputs/${trainer.model_name}/${data.data_name}/${task}/${run_id}
+  job:  # automatically go to the job folder (needed for hydra > 1.2 with new behavior)
+    chdir: true
+
+# Global configurations shared between different modules
+seed: 1234
+logger_level: INFO
+
+task: ???  # online | offline (* mandatory)
+stage: ???  # fit | test (* mandatory)
+data_dir: ???
+# e.g., /lustre/projects/Research_Project-T127204/xk219/projects/datasets/REACT2025
+resume: false
+run_id: ${generate_id:}  # function defined in prepare.py
+resume_id: ""  # specified if resume
+num_gts: 10  # ground-truths
+
+defaults:
+  - data: ???  # react_2025 (* mandatory)
+  - trainer: ???  # motion_diffusion | motion_transvae (* mandatory)
+  - logger: none
+  - /path@path  # path configuration (loaded from configs/path.yaml)
+  - _self_

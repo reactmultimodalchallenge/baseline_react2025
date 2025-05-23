@@ -1,0 +1,4 @@
+logger_name: none
+version: ${run_id}
+logger_dir: tb_logs
+project: null

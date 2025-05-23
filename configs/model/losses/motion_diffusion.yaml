@@ -1,0 +1,9 @@
+_target_: framework.utils.losses.DiffusionLoss
+
+losses_type: MSELossApt
+losses_multiplier: 1.0
+n_preds: ${trainer.${trainer.trainer_mode}.num_preds}
+temporal_loss_w: 0.0
+w_au: 1.0  # action unit
+w_va: 5.0  # valence and arousal
+w_em: 5.0  # emotion

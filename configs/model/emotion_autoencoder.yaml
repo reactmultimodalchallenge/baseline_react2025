@@ -1,0 +1,17 @@
+type: EmotionVAE
+_target_: framework.modules.emotion_autoencoder.EmotionVAE
+
+in_channels: 25
+out_channels: 25
+feature_dim: 512
+nhead: 8
+dropout: 0.1
+num_encoder_layers: 6
+num_decoder_layers: 6
+mlp_dist: False  # expand mu & logvar
+in_proj_type : linear  # linear | mlp
+out_proj_type : separate  # separate | shared
+pe_type : absolute  # learnable | absolute
+query_type : zero
+max_seq_len: 5000
+global_token_len: 64

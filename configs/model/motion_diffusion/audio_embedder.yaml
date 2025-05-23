@@ -1,0 +1,4 @@
+type: AudioEmbedder
+_target_: dataset.modules.audio_embedder.AudioEmbedder
+checkpoint_path: ""
+skip_norm: True

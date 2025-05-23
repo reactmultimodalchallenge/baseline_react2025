@@ -1,0 +1,6 @@
+_target_: framework.utils.losses.EmotionVAELoss
+
+w_au: 1.0
+w_va: 10.0
+w_em: 1.0
+w_kld: 0.001

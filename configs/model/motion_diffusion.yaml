@@ -1,0 +1,60 @@
+diff_model:
+    model_name: LatentMLPMatcher
+    _target_: framework.motion_diffusion.diffusion.matchers.LatentMatcher
+
+    diffusion_decoder:
+        type:
+            TransformerDenoiser
+        args:
+            emb_preprocessing: normalize
+            freeze_encoder: True
+            window_size: ${trainer.${trainer.trainer_mode}.window_size}
+            s_ratio: ${trainer.${trainer.trainer_mode}.s_ratio}
+            token_len: 750
+            encode_emotion: False
+            encode_3dmm: False
+            ablation_skip_connection: True
+            nfeats: 25
+            latent_dim: 512
+            ff_size: 1024
+            num_layers: 9  # 7 | 9
+            num_heads: 8  # 4 | 8
+            dropout: 0.1
+            normalize_before: False
+            activation: gelu
+            flip_sin_to_cos: True
+            return_intermediate_dec: False
+            position_embedding: learned
+            arch: trans_dec
+            freq_shift: 0
+            time_encoded_dim: 64
+            s_audio_dim: 768
+            s_audio_scale: 1.0
+            s_emotion_dim: 25
+            l_embed_dim: 512
+            s_embed_dim: 512
+            personal_emb_dim: 512
+            s_3dmm_dim: 58
+            concat: concat_first
+            guidance_scale: 1.0  # 7.5
+            s_audio_enc_drop_prob: 0.2
+            s_latent_embed_drop_prob: 1.0
+            s_3dmm_enc_drop_prob: 0.2
+            s_emotion_enc_drop_prob: 0.2
+            past_l_emotion_drop_prob: 1.0
+            use_past_frames: False
+        scheduler:
+            noise_schedule: cosine
+            timestep_spacing: leading
+            num_train_timesteps: 1000
+            num_inference_timesteps: 50
+            predict: start_x
+            var_type: fixed_large
+            rescale_timesteps: False
+            noise_std: 1
+            num_preds: ${trainer.${trainer.trainer_mode}.num_preds}
+
+defaults:
+    - /model/losses/motion_diffusion@loss
+    - /model/motion_diffusion/audio_embedder@audio_encoder
+    #- /model/latent_embedder@latent_embedder

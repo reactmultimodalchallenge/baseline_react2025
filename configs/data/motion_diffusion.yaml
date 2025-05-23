@@ -1,0 +1,62 @@
+data_name: react_2025
+_target_: dataset.react_2025.ReactionDataloader
+
+train_dataset:
+    _target_: dataset.react_2025.ReactionDataset
+    batch_size: ${trainer.batch_size}
+    shuffle: True
+    num_workers: 8
+    root_dir: ${data_dir}
+    split: train
+    clip_length: 750  # 256 (transvae)
+    target_size: 224
+    crop_size: 224
+    fps: 30
+    audio_feature_type: wav2vec
+    load_video_s: False
+    load_video_l: True
+    load_audio: True
+    load_emotion_s: True
+    load_emotion_l: True
+    load_3dmm_s: True
+    load_3dmm_l: True
+
+validation_dataset:
+    _target_: dataset.react_2025.ReactionDataset
+    batch_size: ${trainer.batch_size}
+    shuffle: False
+    num_workers: 8
+    root_dir: ${data_dir}
+    split: val
+    target_size: 224
+    crop_size: 224
+    clip_length: 750  # 256 (transvae)
+    fps: 30
+    audio_feature_type: wav2vec
+    load_video_s: False
+    load_video_l: True
+    load_audio: True
+    load_emotion_s: True
+    load_emotion_l: True
+    load_3dmm_s: True
+    load_3dmm_l: True
+
+test_dataset:
+    _target_: dataset.react_2025.ReactionDataset
+    batch_size: ${trainer.batch_size}
+    shuffle: False
+    num_workers: 4
+    root_dir: ${data_dir}
+    split: test
+    target_size: 224
+    crop_size: 224
+    clip_length: 750  # 256 (transvae)
+    fps: 30
+    audio_feature_type: wav2vec  # mfcc | wav2vec
+    load_video_s: False
+    load_video_l: True
+    load_audio: True
+    load_emotion_s: True
+    load_emotion_l: True
+    load_3dmm_s: True
+    load_3dmm_l: True

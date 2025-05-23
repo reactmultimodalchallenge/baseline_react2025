@@ -1,0 +1,23 @@
+model_name: emotion_autoencoder
+_target_: trainer.emotion_autoencoder.Trainer
+
+folder: save/${trainer.model_name}/${data.data_name}/${task}
+ckpt_dir: ${get_last_checkpoint:${trainer.folder}}
+resumed_training: ${resume}
+current_runid: ${run_id}
+resume_runid: ${resume_id}
+
+start_epoch: 0
+epochs: 3000
+tb_dir: tb_log
+val_period: 50
+clip_length: 1000
+batch_size: 8
+lr: 0.0001
+weight_decay: 1e-4
+beta: [0.9, 0.999]
+
+defaults:
+    - /model/emotion_autoencoder@model
+    - /model/optim/adamw@optim
+    - /model/losses/emotion_autoencoder@criterion  # loss func

@@ -1,0 +1,7 @@
+_target_: framework.utils.losses.VAELoss
+
+kl_p: 0.00001  # kl div loss
+w_emo: 2.0
+w_exp: 2.0  # facial expression
+w_rot: 4.0  # rotation
+w_tran: 4.0  # translation

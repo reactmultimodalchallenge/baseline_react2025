@@ -1,0 +1,105 @@
+## Trainer Configs
+#model_name: latent_embedder
+#_target_: trainer.latent_embedder.Trainer
+#folder: save/${trainer.model_name}/${data.data_name}
+#ckpt_dir: ${get_last_checkpoint:${trainer.folder}}
+#resumed_training: ${resume}
+#current_runid: ${run_id}
+#resume_runid: ${resume_id}
+#start_epoch: 0
+#epochs: 200
+#val_period: 10
+#lr: 0.001
+#weight_decay: 5e-4
+#beta: [0.9, 0.999]
+#clip_length: 750
+#window_size: 30
+#s_ratio: 2
+#tb_dir: tb_logs
+#batch_size: 16
+#defaults:
+#    - /model/latent_embedder@model
+#    - /model/optim/adamw@optim
+#    - /model/losses/latent_embedder@criterion  # loss func
+
+## Model Configs
+#type: LatentEmbedder
+#_target_: framework.motion_diffusion.diffusion.rnn.LatentEmbedder
+#checkpoint_path: pretrained_models/latent_embedder/checkpoint.pth
+#emotion_dim: 25
+#coeff_3dmm_dim: 58
+#emb_dims: [128, 128]
+#num_layers: 2
+#hidden_dim: 512
+#z_dim: 512
+#rnn_type: 'gru'
+#dropout: 0.0
+
+## Loss Configs
+#_target_: framework.motion_diffusion.diffusion.utils.losses.MSELoss_AE
+#w_mse: 1.0
+#w_kld: 0.00001
+#w_coeff: 1.0
+
+## Data Configs
+#data_name: react_2025
+#_target_: dataset.react_2025.ReactionDataloader
+#train_dataset:
+#    _target_: dataset.react_2025.ReactionDataset
+#    batch_size: ${trainer.batch_size}
+#    shuffle: True
+#    num_workers: 16
+#    root_dir: ${data_dir}
+#    split: train
+#    clip_length: 750
+#    target_size: 224
+#    crop_size: 224
+#    fps: 30
+#    audio_feature_type: wav2vec
+#    load_video_s: False
+#    load_video_l: False
+#    load_audio: False
+#    load_emotion_s: True
+#    load_emotion_l: False
+#    load_3dmm_s: True
+#    load_3dmm_l: False
+
+#validation_dataset:
+#    _target_: dataset.react_2025.ReactionDataset
+#    batch_size: ${trainer.batch_size}
+#    shuffle: False
+#    num_workers: 16
+#    root_dir: ${data_dir}
+#    split: val
+#    target_size: 224
+#    crop_size: 224
+#    clip_length: 750
+#    fps: 30
+#    audio_feature_type: wav2vec
+#    load_video_s: False
+#    load_video_l: False
+#    load_audio: False
+#    load_emotion_s: True
+#    load_emotion_l: False
+#    load_3dmm_s: True
+#    load_3dmm_l: False
+
+#test_dataset:
+#    _target_: dataset.react_2025.ReactionDataset
+#    batch_size: 1
+#    shuffle: False
+#    num_workers: 8
+#    root_dir: ${data_dir}
+#    split: test
+#    target_size: 224
+#    crop_size: 224
+#    clip_length: 750
+#    fps: 30
+#    audio_feature_type: wav2vec
+#    load_video_s: False
+#    load_video_l: False
+#    load_audio: False
+#    load_emotion_s: True
+#    load_emotion_l: False
+#    load_3dmm_s: True
+#    load_3dmm_l: False
