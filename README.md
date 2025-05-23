@@ -4,7 +4,7 @@
 This repository provides baseline methods for the [Third REACT Challenge](https://sites.google.com/cam.ac.uk/react2024)
 
 ### Baseline paper:
-- [ ] to be released
+- https://github.com/reactmultimodalchallenge/baseline_react2025/blob/main/REACT_2025_Baseline%20paper.pdf
 
 ### Challenge Description
 Given the spatio-temporal behaviours expressed by a speaker at the time period, the proposed REACT 2025 Challenge will consist of the following two sub-challenges whose theoretical underpinnings have been defined and detailed in this paper.
