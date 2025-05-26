@@ -6,6 +6,9 @@ This repository provides baseline methods for the [Third REACT Challenge](https:
 ### Baseline paper:
 - https://arxiv.org/pdf/2505.17223
 
+### MARS dataset:
+- Please send the signed EULA (https://github.com/reactmultimodalchallenge/baseline_react2025/blob/main/EULA_MARS%20dataset.pdf) to Dr Siyang Song at s.song@exeter.ac.uk 
+
 ### Challenge Description
 Given the spatio-temporal behaviours expressed by a speaker at the time period, the proposed REACT 2025 Challenge will consist of the following two sub-challenges whose theoretical underpinnings have been defined and detailed in this paper.
 
