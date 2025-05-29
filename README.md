@@ -1,7 +1,7 @@
 # Official baseline code for the Third REACT Challenge (REACT2025)
 [[Homepage]](https://sites.google.com/view/react2025)  [[Reference Paper (TBA)]]() [[Code]](https://github.com/reactmultimodalchallenge/baseline_react2025)
 
-This repository provides baseline methods for the [Third REACT Challenge](https://sites.google.com/cam.ac.uk/react2024)
+This repository provides baseline methods for the [Third REACT Challenge](https://sites.google.com/view/react2025)
 
 ### Baseline paper:
 - https://arxiv.org/pdf/2505.17223
