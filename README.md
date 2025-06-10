@@ -258,7 +258,65 @@ python main.py \
 
 <details><summary> <b> Evaluation </b>  </summary>
 
-- [ ] to be released
+[//]: # (- [ ] to be released)
+For evaluation, please refer to `test` function in _./trainer/motion_diffusion.py_ (PerFRDiff baseline) or _./trainer/motion_transvae.py_ (Trans-VAE baseline). The metric computations are implemented in _./framework/utils/compute_metrics.py_. The validation set can be treated as the test set by loading it via the provided dataloader file. As in the baseline paper, all facial reactions from different participants within the same session are defined as ground-truths.
+The pretrained model weights will be released soon.
+
+<b>Trans-VAE</b>
+- Running the following shell can evaluate a trained Trans-VAE baseline for the offline task:
+ ```shell
+ python main.py \
+    data=motion_transvae \
+    trainer=motion_transvae \
+    trainer.batch_size=1 \
+    trainer.max_seq_len=750 \
+    trainer.window_size=8 \
+    trainer.data_transform=zero_center \
+    stage=test \
+    task=offline \
+    data_dir=/home/x/xk18/REACT2025 \
+    resume_id=<train-experiment-id>
+ ```
+ &nbsp; &nbsp; or for the online task:
+ 
+  ```shell    
+ python main.py \
+    data=motion_transvae \
+    trainer=motion_transvae \
+    trainer.batch_size=1 \
+    trainer.max_seq_len=256 \
+    trainer.window_size=16 \
+    trainer.data_transform=zero_center \
+    stage=test \
+    task=online \
+    data_dir=/home/x/xk18/REACT2025 \
+    resume_id=<train-experiment-id>
+ ```
+
+ <b>PerFRDiff</b>
+ - Running the following shell can evaluate a trained PerFRDiff baseline for the offline task: 
+```shell
+ python main.py \
+    data=motion_diffusion \
+    trainer=motion_diffusion \
+    trainer.batch_size=1 \
+    stage=test \
+    task=offline \
+    data_dir=/home/x/xk18/REACT2025 \
+    resume_id=<train-experiment-id>
+```
+ &nbsp; &nbsp; or for the online task:
+```shell
+ python main.py \
+    data=motion_diffusion \
+    trainer=motion_diffusion \
+    trainer.batch_size=1 \
+    stage=test \
+    task=online \
+    data_dir=/home/x/xk18/REACT2025 \
+    resume_id=<train-experiment-id>
+```
+
 
 </details>
 
