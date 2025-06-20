@@ -166,7 +166,9 @@ We use 3DMM coefficients to represent a 3D listener or speaker, and for further 
 
 Then, we use a 3D-to-2D tool [PIRender](https://github.com/RenYurui/PIRender) to render final 2D facial reaction frames.
  
-- We re-trained the PIRender, and the well-trained model is provided at the [checkpoint](https://1drv.ms/u/c/4c787027becb2e91/ERLUL_QTBABHoLzCTCbUZF8Bu6e_5o0YX31rA12yv0DIcQ?e=mWKgcn). Please put it in the folder (`external/PIRender/`).
+- We re-trained the PIRender, and the well-trained model is provided at the [checkpoint](https://1drv.ms/u/c/4c787027becb2e91/EclM8oNvDeBKgI4I2lO95zkBXbTgRxuyGerKJ_EhYBuEtA?e=40O0Wc). Please put it in the folder (`external/PIRender/`).
+
+[//]: # (https://1drv.ms/u/c/4c787027becb2e91/ERLUL_QTBABHoLzCTCbUZF8Bu6e_5o0YX31rA12yv0DIcQ?e=mWKgcn)
 
 Finally, please download the compressed folder named `pretrained_models` from [this link](https://1drv.ms/u/c/4c787027becb2e91/EZ_l_EhvDbFOnmA_n69F1z0BpSqZumEcevc-iC3wVOhqhA?e=FlqhFb), and extract it into the project root directory.
 
