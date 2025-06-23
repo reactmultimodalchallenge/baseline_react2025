@@ -134,6 +134,7 @@ class Trainer:
                     lowest_val_loss = val_loss
                     ckpt_path = self.get_ckpt_path(model, best=True)
                     logger.info(f"Saving best checkpoint, val_loss: {lowest_val_loss:.5f}, ckpt_path: {ckpt_path}")
+                    checkpoint['best_loss'] = lowest_val_loss
                     torch.save(checkpoint, ckpt_path)
 
                 ckpt_path = self.get_ckpt_path(model, epoch=(epoch + 1))
